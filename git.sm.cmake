@@ -4,9 +4,10 @@ macro(init_git_submodule)
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 endmacro()
 
-macro(add_git_submodule path proj_name)
+macro(add_git_submodule path branch_name)
   execute_process(
-    COMMAND git pull origin master
+    COMMAND git checkout ${branch_name}
+    #COMMAND git pull origin master
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${path}
     )
   add_subdirectory(${path})
